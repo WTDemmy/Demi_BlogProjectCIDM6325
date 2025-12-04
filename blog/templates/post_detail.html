@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load markdownify %}
+{% block content %}
+<div class="container mt-5">
+  <h1>{{ post.title }}</h1>
+  <p>{{ post.content|markdownify }}</p>
+  <p><small>By {{ post.author }} on {{ post.created_at }}</small></p>
+
+  {% if user == post.author %}
+    <a href="{% url 'post_edit' post.pk %}" class="btn btn-warning">Edit</a>
+    <a href="{% url 'post_delete' post.pk %}" class="btn btn-danger">Delete</a>
+  {% endif %}
+
+  {% if post.image %}
+    <div class="mt-4">
+      <img src="{{ post.image.url }}" alt="Post Image" class="img-fluid">
+    </div>
+  {% endif %}
+
+  <a href="{% url 'post_list' %}" class="btn btn-secondary">Back</a>
+</div>
+{% endblock %}
