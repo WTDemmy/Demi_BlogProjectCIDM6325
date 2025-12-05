@@ -206,16 +206,21 @@
     font-size: 0.9rem;
 }
 
-/* FIX NAV CLICKS ON RENDER */
+/* Fix header overlay blocking clicks */
+.glitter-header::before {
+    pointer-events: none !important;
+    z-index: 0 !important;
+}
+
 .glitter-header {
-    pointer-events: none;
     position: relative;
     z-index: 1;
 }
 
-.pink-nav {
-    pointer-events: auto !important;
+/* Ensure nav is above the overlay */
+nav, .pink-nav, .navbar {
     position: relative;
-    z-index: 9999 !important;
+    z-index: 10 !important;
+    pointer-events: auto !important;
 }
 
