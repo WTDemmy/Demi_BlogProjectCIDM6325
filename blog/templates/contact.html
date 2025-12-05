@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container" style="text-align: center; padding: 50px;">
+    <h2 style="color: #ff69b4;">💌 Contact Me</h2>
+    <div style="max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 20px; border: 3px solid #ffb6c1;">
+        <p>Want to chat about code, cute tech, or just say hi? ✨</p>
+        <div style="margin: 30px 0;">
+            <p><i class="fas fa-envelope" style="color: #ff69b4;"></i> Email: demi@example.com</p>
+            <p><i class="fab fa-instagram" style="color: #ff69b4;"></i> Instagram: @demisblog</p>
+            <p><i class="fab fa-github" style="color: #ff69b4;"></i> GitHub: demi-codes</p>
+        </div>
+        <a href="{% url 'home' %}" class="pink-button">Back to Home</a>
+    </div>
+</div>
+{% endblock %}

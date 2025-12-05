@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -33,6 +34,7 @@ ALLOWED_HOSTS = ["*",
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -121,6 +123,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # Project-wide static
+    os.path.join(BASE_DIR, 'blog/static'),  # App-specific static
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -151,3 +159,23 @@ MARKDOWNIFY = {
 CSRF_TRUSTED_ORIGINS = [
     "https://demis-blog.onrender.com"
 ]
+# Jazzmin settings
+JAZZMIN_SETTINGS = {
+    "site_title": "Demi's Pink Blog Admin",
+    "site_header": "Demi's Pink Admin",
+    "site_brand": "💻🌸 Blog Computer Chick",
+    "site_logo": "images/admin-logo.png",
+    "login_logo": "images/login-logo.png",
+    "theme": "pink",  # or use "default" and customize colors
+    "navigation_expanded": True,
+    "show_sidebar": True,
+    "custom_css": "css/admin-pink.css",
+    "theme_colors": {
+        "primary": "#ff69b4",  # Hot pink
+        "secondary": "#ffb6c1",  # Light pink
+        "info": "#ffc0cb",  # Pink
+        "success": "#db7093",  # Pale violet red
+        "warning": "#ff1493",  # Deep pink
+        "danger": "#c71585",  # Medium violet red
+    }
+}

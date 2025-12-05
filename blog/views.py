@@ -13,7 +13,8 @@ from .forms import PostForm
 # Home
 # -------------------
 def home(request):
-    return render(request, 'home.html')
+    posts = Post.objects.all().order_by('-created_at')
+    return render(request, 'home.html', {'posts': posts})
 
 
 # -------------------
@@ -96,6 +97,14 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def test_func(self):
         post = self.get_object()
         return self.request.user == post.author  # only author can delete
+
+def about(request) -> None:
+    """Render the about page."""
+    return render(request, 'about.html')
+
+def contact(request) -> None:
+    """Render the contact page."""
+    return render(request, 'contact.html')
 
 """
 Tradeoff Notes:

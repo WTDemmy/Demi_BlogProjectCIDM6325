@@ -1,7 +1,40 @@
 {% extends "base.html" %}
+{% load static %}
+
 {% block content %}
-<div class="container mt-5">
-  <h1>Welcome to Demi’s Blog</h1>
-  <p>This is your homepage. If you see this, your setup works perfectly. </p>
+<div class="container">
+    <div class="welcome-box">
+        <h2>🌸 Welcome to My Tech World! 🌸</h2>
+        <p>Gossip, code, and everything Pink! 💻✨</p>
+    </div>
+    
+    <!-- Pinterest-Style Grid -->
+    <div class="posts-grid">
+        {% for post in posts %}
+        <article class="grid-post">
+            {% if post.image %}
+            <img src="{{ post.image.url }}" alt="{{ post.title }}" class="grid-post-image">
+            {% else %}
+            <div class="grid-post-image" style="background: linear-gradient(135deg, #ffb6c1, #ff69b4); display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-heart" style="font-size: 3rem; color: white;"></i>
+            </div>
+            {% endif %}
+            
+            <div class="grid-post-content">
+                <h3 class="grid-post-title">{{ post.title }}</h3>
+                <p class="grid-post-excerpt">{{ post.content|truncatewords:30 }}</p>
+                
+                <div class="grid-post-meta">
+                    <span><i class="fas fa-user"></i> {{ post.author.username }}</span>
+                    <span><i class="far fa-calendar"></i> {{ post.created_at|date:"M d, Y" }}</span>
+                </div>
+                
+                <a href="{% url 'post_detail' post.pk %}" class="pink-button" style="display: inline-block; margin-top: 15px;">
+                    Read More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
