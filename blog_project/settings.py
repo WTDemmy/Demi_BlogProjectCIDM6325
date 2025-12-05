@@ -27,8 +27,10 @@ SECRET_KEY = 'django-insecure-r7&3cvf)pkb-#8f8g@&2&cd6u8=)pfzzys&)n%bsg0kt3ftgqy
 DEBUG = True
 
 ALLOWED_HOSTS = ["*",
-                 "demis-blog.onrender.com"
-                 "https://demis-blog.onrender.com"]  
+                 "demis-blog.onrender.com",
+                 
+                 
+                 ]  
 
 
 # Application definition
@@ -122,7 +124,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),  # Project-wide static
     os.path.join(BASE_DIR, 'blog/static'),  # App-specific static
