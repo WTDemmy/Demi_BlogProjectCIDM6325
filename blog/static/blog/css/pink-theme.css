@@ -206,3 +206,16 @@
     font-size: 0.9rem;
 }
 
+/* FIX NAV CLICKS ON RENDER */
+.glitter-header {
+    pointer-events: none;
+    position: relative;
+    z-index: 1;
+}
+
+.pink-nav {
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 9999 !important;
+}
+
