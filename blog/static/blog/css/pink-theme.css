@@ -52,8 +52,11 @@
     display: flex;
     gap: 15px;
     align-items: center;
+    justify-content: center;
     position: relative;
     z-index: 10;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 .pink-nav .nav-link,
@@ -65,10 +68,10 @@
     transition: all 0.3s;
     cursor: pointer;
     pointer-events: auto;
-    position: relative;
-    z-index: 11;
     background: transparent;
     border: none;
+    position: relative;
+    z-index: 10;
 }
 
 .pink-nav .nav-link:hover,
@@ -221,14 +224,18 @@
     z-index: -1 !important;
 }
 
-/* Ensure nav is above the overlay */
+/* Ensure nav container is properly positioned */
 .glitter-header .container {
     position: relative;
-    z-index: 10;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
-nav, .pink-nav, .navbar {
-    position: relative;
-    z-index: 11 !important;
-    pointer-events: auto !important;
+/* Navigation always clickable and centered */
+.pink-nav {
+    pointer-events: auto;
+    width: 100%;
 }
