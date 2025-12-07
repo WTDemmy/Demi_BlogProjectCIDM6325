@@ -239,3 +239,32 @@
     pointer-events: auto;
     width: 100%;
 }
+
+/* === FINAL RENDER FIX — FORCE NAV ABOVE ALL HEADER LAYERS === */
+
+/* Ensure header creates a proper stacking context */
+.glitter-header {
+    position: relative !important;
+    z-index: 1 !important; 
+}
+
+/* Disable overlay interference */
+.glitter-header::before {
+    pointer-events: none !important;
+    z-index: 0 !important;
+}
+
+/* NAV MUST ALWAYS SIT ABOVE HEADER (render-safe) */
+.pink-nav {
+    position: relative !important;
+    z-index: 999999 !important;
+    pointer-events: auto !important;
+}
+
+/* Nav links must ALWAYS accept clicks */
+.pink-nav .nav-link,
+.pink-nav button {
+    pointer-events: auto !important;
+    position: relative !important;
+    z-index: 999999 !important;
+}
